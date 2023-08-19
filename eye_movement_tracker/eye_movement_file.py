@@ -1,5 +1,6 @@
 import cv2
 import mediapipe
+import pyautogui
 
 cam = cv2.VideoCapture(0)                               # this gets the first video capture device connected to machine (camera)
 face_mesh = mediapipe.solutions.face_mesh.FaceMesh(refine_landmarks=True)
@@ -17,6 +18,7 @@ while True:                                             # infinete loop to keep 
             x = int(landmark.x * frame_width)
             y = int(landmark.y * frame_height)
             cv2.circle(frame,(x,y), 3, (0, 255, 0))  #detects the landmarks of the face with green circles
+
             print(x, y)
     cv2.imshow('Eye Controlled Mouse', frame)   # creates a window to show video captures
     cv2.waitKey(1)

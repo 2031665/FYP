@@ -9,3 +9,6 @@ however i still require to track the eye movement
 
 19/08/2023(night)
 after some research on https://github.com/google/mediapipe/blob/master/docs/solutions/face_mesh.md#refine_landmarks i have learned about the refine_landmarks functionality which helps refine the coordinates around the eyes or the lips. the FaceMesh model overal puts 478 3-dimensional face landmarks(CITATION https://developers.google.com/mediapipe/solutions/vision/face_landmarker/) and since we need out of all these landmarks only the iris we only get ranging from 478 to 468 shown in code as: landmarks[474:478]. the issue right now is that the camera view shows the opposite, so to fix this i have flipped the frame by using OpenCV cv2.flip(frame, 1) method to flip camera view vertically. this is what it looks like atm ![img.png](photos_of_diary/img.png)
+
+20/08/2023
+the next step is to make the cursor move with the detected eye. to do that i have used the library PyAutoGUI https://pyautogui.readthedocs.io/en/latest/ the documentation for this is quite helpful.
