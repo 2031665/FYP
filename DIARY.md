@@ -17,5 +17,8 @@ MY BIG CONCERN IS I DONT KNOW IF THIS WOULD BE UNIT TESTABLE ???? ASK LELA
 20/08/2023
 now that we have a cursor that tracks our eye movement i can start on the game itself, what i have in mind for the game is a birds eye view shooter game where the user sees the character from a top down view. i am creating the game on unity but as i am writing this i am having some issues with git, maybe i might have to create a new repo for the game.
 
-25/04/08
+25/08/2023
 i have finsihed the basics of the game and have been researching how to get the data that is created in this python script in to Unity. i made quite a lot of research and saw few third party tools such as ironPython and Python For Unity. However i realised that ironPython is outdated and no longer used, while the Python for Unity does not support the Python versions above 2.7.(the python version we use is 3.9), so i saw some people online that sends the data from the python script through a TCP socket to the Unity2D's C# script. today i will mostly test on this, hopefully it works the way i wish.
+
+31/08/2023
+i have created the Apps main menu where all the tutorial games are presented, however this is the first designs, it might change in the future. here is the low fidelity design![img.png](img.png) here is the high fidelity design made in figma: ![img_1.png](img_1.png). the menu menu is created by using Tkinter library, this library provides me the tools to create a well made GUI. however i have found another plugin for this app which is called Tkinter-designer. i just create the design on figma and this will automatically create the gui app for me. however i would require to use their tools on the github they have provided. here is their github: https://github.com/ParthJadhav/Tkinter-Designer.git . now i will add more things on top of this gui. 
