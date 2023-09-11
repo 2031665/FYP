@@ -32,3 +32,6 @@ i have a simple gui for the app and currently i do have the eye tracker and the 
 04/09/2023
 
 the gui for the app is not what i want. so i was thinking maybe i could include the tutorials and stuff in the game as well.
+
+11/09/2023
+i have now arrived in UK and also get my hans on a Muse Headband device which i have done some experiments. I have managed to connect create the connection between the mind monitor app and the python file with osc by using james Clutterbucks OSC receiver from github, while doing so the python-osc library which implements a server and a client for OpenSoundControl protocol it is quite good with the hardware and control applications.. this python script basically get the basic eeg data from the mind-monitor i have been checking few tables for the jaw clench detaction and i saw that there is a graph i could actually detect the clench. however this, brought some issues in my mind because this also detects the blinks as well, which could cause some troubles, and also moving the head could cause to disconnection of the headband sometimes, but i will continune my research on this. to connect the mind monitor to the python script the ipv4 address needs to be specified on the app, so that the connection is created.
