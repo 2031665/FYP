@@ -1,5 +1,6 @@
 from tkinter import *
 from build import page2
+from build import TypingGame
 
 class Page1:
     def __init__(self, window):
@@ -22,12 +23,16 @@ class Page1:
         button_1.pack(pady=50)
 
         # BUTTON-2 (ANARAM GAME)
-        button_2 = Button(self.window, borderwidth=0, highlightthickness=0, command=lambda: print("button_2 clicked"), relief="flat",text="Anagram Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
+        button_2 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_typing_game, relief="flat",text="Anagram Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
         button_2.pack(pady=50)
 
         # BUTTON-3 (DRAG-AND-DROP GAME)
         button_3 = Button(self.window, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat",text="Drag-and-Drop Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
         button_3.pack(pady=50)
+
+    def go_typing_game(self):
+        # allows me to create a page on top of another page
+        TypingGame.TypingGame().execute_game()
 
     def go_page2(self):
         win = Toplevel()            #allows me to create a page on top of another page
@@ -40,6 +45,8 @@ def page():                             #this method makes it easier to control 
     window = Tk()
     Page1(window)
     window.mainloop()
+
+
 
 if __name__ == '__main__':
     page()

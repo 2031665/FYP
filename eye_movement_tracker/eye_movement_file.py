@@ -27,3 +27,6 @@ class EyeTracker:
             cv2.imshow('Eye Controlled Mouse', frame)                            # creates a window to show video captures
             cv2.waitKey(1)
 
+# if __name__ == "__main__":
+#     Run = EyeTracker()
+#     Run.eye_track()
