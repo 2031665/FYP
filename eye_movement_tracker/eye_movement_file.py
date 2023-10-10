@@ -37,7 +37,8 @@ class EyeTracker:
                     y = int(landmark.y * frame_height)
                     cv2.circle(frame, (x, y), 3, (0, 255, 255))
 
-                if (right[0].y - right[1].y) < 0.004 and (left[0].y - left[1].y) < 0.004:
+                #print((right[0].y - right[1].y)+(left[0].y - left[1].y))
+                if (right[0].y - right[1].y)+(left[0].y - left[1].y) <0.015:
                     print("noclick")
                     pyautogui.sleep(0.2)
                 else:
