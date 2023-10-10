@@ -17,6 +17,7 @@ class EyeTracker:
             frame_height, frame_width, _ = frame.shape                                   # getting the frame_height and frame_width
             if landmark_points:
                 landmarks = landmark_points[0].landmark                                  # this detects only one face. (the first face that shows on camera)
+                mouth = [landmarks[12], landmarks[14]]
                 left =[landmarks[145], landmarks[159]]          #145-159
                 right = [landmarks[374], landmarks[386]]
                 for landmark in landmarks[473:474]:                                      # every landmark in the list landmarks but we only require the iris landmarks which are [474][478]
@@ -28,6 +29,10 @@ class EyeTracker:
                     #print(screen_x, screen_y)  # test to see if the cursor matches the correct pixels on the computer
                     data = pyautogui.moveTo(screen_x, screen_y)
             #if isMusedUsed
+                for landmark in mouth:
+                    x = int(landmark.x * frame_width)
+                    y = int(landmark.y * frame_height)
+                    cv2.circle(frame, (x, y), 3, (255, 255, 0))
                 for landmark in left:
                     x = int(landmark.x * frame_width)
                     y = int(landmark.y * frame_height)
@@ -36,6 +41,12 @@ class EyeTracker:
                     x = int(landmark.x * frame_width)
                     y = int(landmark.y * frame_height)
                     cv2.circle(frame, (x, y), 3, (0, 255, 255))
+
+
+                if (mouth[0].y - mouth[1].y) < -0.1:
+                    print("mouth open")
+                    pyautogui.hotkey('win', 'ctrl', 'o')
+                    pyautogui.sleep(1)
 
                 #print((right[0].y - right[1].y)+(left[0].y - left[1].y))
                 if (right[0].y - right[1].y)+(left[0].y - left[1].y) <0.015:

@@ -37,4 +37,16 @@ the gui for the app is not what i want. so i was thinking maybe i could include 
 i have now arrived in UK and also get my hans on a Muse Headband device which i have done some experiments. I have managed to connect create the connection between the mind monitor app and the python file with osc by using james Clutterbucks OSC receiver from github, while doing so the python-osc library which implements a server and a client for OpenSoundControl protocol it is quite good with the hardware and control applications.. this python script basically get the basic eeg data from the mind-monitor i have been checking few tables for the jaw clench detaction and i saw that there is a graph i could actually detect the clench. however this, brought some issues in my mind because this also detects the blinks as well, which could cause some troubles, and also moving the head could cause to disconnection of the headband sometimes, but i will continune my research on this. to connect the mind monitor to the python script the ipv4 address needs to be specified on the app, so that the connection is created.
 
 18/0/9/2023
+
 as a part of my research there is 4 sensers that is required to get the raw eeg data. these are TP9(LEFT EAR),TP10(RIGHT EAR),AF7(LEFT FOREHEAD),AF8(RIGHT FOREHEAD). however the in-built clench detection helped me with the detection clenches, i have also tested if the clench detection works the way i we have expected to. this line of code is to test the clenches![img_4.png](img_4.png) what it does is basically when ever a clench is made it will count the number of clenches, the test was carried out by clenching and counting real clenches while the testing out other things other than clenches as well. as a result of my test the clenches are being counted successfully but however if i move my headaround to much or blink so hard that it moves mt jaw it will count those as a clench as well. one another issue is that the connection sometimes might fall behind as well, which causes clenches to come from behind. now my next step is to get this clench as a click and see if it actually does a click action.
+
+10/10/2023
+the indexes for the left eye. i am using 159 and 148
+![img_9.png](img_9.png)
+the indexes for the mouth i am using 12 and 13
+![img_10.png](img_10.png)
+the indexes for right eye i am using 374 and 386
+![img_11.png](img_11.png)
+
+i have implemented another way of using the mouse which is only with the eye movements. left blink will always do left click on mouse and right blink will do right click, however i am detecting these blinks by using the landmarks as i have previously mentioned. out of 478 indexes i had to find the eyelids top-bottom landmarks, the reason for that is when someone is blinking the top and bottom landmarks are following a vertical path, so i get their verticall position and subtract it from eachother. after some testing with subtracted value i have seen that the distance will be shorter when the eyes are closed. the closed eye distance of landmarks were 0.004
+IMPORTANT TO BE ABLE TO USE THE PYAUTOGUI PROPERLY THE IDE NEEDS TO RUN AS AN ADMIN. STILL NOT FINISHED WITH THIS PART CONTINUE TOMORROW.
