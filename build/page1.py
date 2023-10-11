@@ -1,6 +1,7 @@
 from tkinter import *
 from build import page2
-from build import TypingGame
+from build import UsedHardware
+
 
 class Page1:
     def __init__(self, window):
@@ -14,29 +15,29 @@ class Page1:
         height = self.window.winfo_screenheight()
         self.window.geometry("%dx%d" % (width, height))
 
-        page_title = Label(self.window, text="Muse Headband Training", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9",justify="center")
-        page_title.pack(pady=100)
+        button_camera_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_camera_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_camera_yes.pack()
+        button_camera_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_camera_used_no, relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_camera_no.pack()
+
+        button_muse_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_muse_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_muse_yes.pack()
+        button_muse_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_muse_used_no, relief="flat", text="no", font=("Imprima",24*-1), justify="center", width=46,height=3)
+        button_muse_no.pack()
+
+        button_eye_tracking_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_eye_tracking_yes.pack()
+        button_eye_tracking_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_no, relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_eye_tracking_no.pack()
+
+        open_page_button = Button(window, text="open new page", command=self.go_page2)
+        open_page_button.pack()
 
 
-        # BUTTON-1 (SHOOTER GAME)
-        button_1 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_page2, relief="flat",text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
-        button_1.pack(pady=50)
-
-        # BUTTON-2 (ANARAM GAME)
-        button_2 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_typing_game, relief="flat",text="Anagram Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
-        button_2.pack(pady=50)
-
-        # BUTTON-3 (DRAG-AND-DROP GAME)
-        button_3 = Button(self.window, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat",text="Drag-and-Drop Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
-        button_3.pack(pady=50)
-
-    def go_typing_game(self):
-        # allows me to create a page on top of another page
-        TypingGame.TypingGame().execute_game()
 
     def go_page2(self):
         win = Toplevel()            #allows me to create a page on top of another page
-        page2.Page2(win)            #calling the Page2 on top of Page1
+        page2.Page2(win, UsedHardware.SharedData.isCameraUsed, UsedHardware.SharedData.isMuseUsed, UsedHardware.SharedData.isEyeTrackingUsed)            #calling the Page2 on top of Page1
         self.window.withdraw()      #Withdraw the page1
         win.deiconify()
 

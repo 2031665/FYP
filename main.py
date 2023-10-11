@@ -3,10 +3,11 @@ import threading
 from eye_movement_tracker import eye_movement_file
 from build import page1
 from Muse import MuseOscConnection
+from build import UsedHardware
 class MainApplication:
         def run_eye_tracker(self):
             eye_track = eye_movement_file.EyeTracker()
-            eye_track.eye_track()
+            eye_track.eye_track(UsedHardware.SharedData.isCameraUsed, UsedHardware.SharedData.isMuseUsed, UsedHardware.SharedData.isEyeTrackingUsed)
         def run_gui(self):
             page1.page()
         def run_muse_inputs(self):

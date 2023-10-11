@@ -1,51 +1,60 @@
-import tkinter
 from tkinter import *
-from PIL import ImageTk, Image
-from build import ShooterGamePage
+from build import page3
+from build import TypingGame
+from build import UsedHardware
 
 class Page2:
-    def __init__(self, window):
+    def __init__(self, window ,isCameraUsed, isMuseUsed, isEyeTrackerUsed):
+
         self.window = window
-        self.window.geometry("1440x1024")
         self.window.resizable(0, 0)
-        self.window.configure(bg="#7C6767")
-        self.window.title("page2")
+        self.window.configure(bg = "#7C6767")
+        self.window.title("page1")
 
+        width = self.window.winfo_screenwidth()
+        height = self.window.winfo_screenheight()
+        self.window.geometry("%dx%d" % (width, height))
 
-
-
-        self.window.bind("<Button-1>", self.go_shooter_game)
-
-        self.width = self.window.winfo_screenwidth()
-        self.height = self.window.winfo_screenheight()
-        self.window.geometry("%dx%d" % (self.width, self.height))
-
-
-
-        canvas = tkinter.Canvas(self.window, width=self.width, height=self.height, bg="#7C6767")
-        canvas.place(relx=0.5,rely=0.5, anchor=tkinter.CENTER)
-
-
-        page_title = Label(self.window, text="Shooter Game Tutorial", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9",justify="center")
+        page_title = Label(self.window, text="Muse Headband Training", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9",justify="center")
         page_title.pack(pady=100)
 
-        shooter_game_photo = Image.open("build/assets/GamePictures/ShooterGame.png")
-        resized_shooter_game_photo = shooter_game_photo.resize((406,388), Image.ADAPTIVE)
-        self.newShooterGamePhoto = ImageTk.PhotoImage(resized_shooter_game_photo)
-        photo = Label(self.window, image=self.newShooterGamePhoto, borderwidth=0)
-        photo.image = self.newShooterGamePhoto
-        photo.pack()
+        label_camera = Label(self.window, text=f"camera Boolean Value: {isCameraUsed}")
+        label_camera.pack(pady=10)
 
-        instructive_text = Image.open("build/assets/text/instructive_text_shooter.png")
-        resized_text = instructive_text.resize((1166,294), Image.ADAPTIVE)
-        self.new_instructive_text=ImageTk.PhotoImage(resized_text)
-        photo = Label(self.window, image=self.new_instructive_text, borderwidth=0)
-        photo.pack(pady=100)
-    def go_shooter_game(self,_):
-    # allows me to create a page on top of another page
-        ShooterGamePage.ShooterGamePage().execute_game()
+        label_muse = Label(self.window, text=f"muse Boolean Value: {isMuseUsed}")
+        label_muse.pack(pady=10)
 
-def page():  # this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
+        label_eye_tracker = Label(self.window, text=f"eye track Boolean Value: {isEyeTrackerUsed}")
+        label_eye_tracker.pack(pady=10)
+
+
+        # BUTTON-1 (SHOOTER GAME)
+        button_1 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_page2, relief="flat",text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
+        button_1.pack(pady=50)
+
+        # BUTTON-2 (ANARAM GAME)
+        button_2 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_typing_game, relief="flat",text="Anagram Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
+        button_2.pack(pady=50)
+
+        # BUTTON-3 (DRAG-AND-DROP GAME)
+        button_3 = Button(self.window, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat",text="Drag-and-Drop Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
+        button_3.pack(pady=50)
+
+        print(f"camera bool {UsedHardware.SharedData.isCameraUsed}")
+        print(f"muse bool {UsedHardware.SharedData.isMuseUsed}")
+        print(f"eye tracking bool {UsedHardware.SharedData.isEyeTrackingUsed}")
+    def go_typing_game(self):
+        # allows me to create a page on top of another page
+        TypingGame.TypingGame().execute_game()
+
+    def go_page2(self):
+        win = Toplevel()            #allows me to create a page on top of another page
+        page3.Page3(win)            #calling the Page2 on top of Page1
+        self.window.withdraw()      #Withdraw the page1
+        win.deiconify()
+
+def page():                             #this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
+    print("test1")
     window = Tk()
     Page2(window)
     window.mainloop()

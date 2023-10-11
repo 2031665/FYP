@@ -49,4 +49,4 @@ the indexes for right eye i am using 374 and 386
 ![img_11.png](img_11.png)
 
 i have implemented another way of using the mouse which is only with the eye movements. left blink will always do left click on mouse and right blink will do right click, however i am detecting these blinks by using the landmarks as i have previously mentioned. out of 478 indexes i had to find the eyelids top-bottom landmarks, the reason for that is when someone is blinking the top and bottom landmarks are following a vertical path, so i get their verticall position and subtract it from eachother. after some testing with subtracted value i have seen that the distance will be shorter when the eyes are closed. the closed eye distance of landmarks were 0.004
-IMPORTANT TO BE ABLE TO USE THE PYAUTOGUI PROPERLY THE IDE NEEDS TO RUN AS AN ADMIN. STILL NOT FINISHED WITH THIS PART CONTINUE TOMORROW.
+IMPORTANT TO BE ABLE TO USE THE PYAUTOGUI PROPERLY THE IDE NEEDS TO RUN AS AN ADMIN. ALSO FOR THE COMPUTER TO OPEN THE ON SCREEN KEYBOARD USER NEEDS TO HAVE THE SHORTCUT FOR IT TURNED ON STILL NOT FINISHED WITH THIS PART CONTINUE TOMORROW.

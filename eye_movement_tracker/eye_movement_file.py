@@ -3,7 +3,8 @@ import mediapipe
 import pyautogui
 
 class EyeTracker:
-    def eye_track(self):    #need to add the arguments isCameraUsed and isMuseUsed.
+    def eye_track(self, isCameraUsed, isMuseUsed, isEyeTrackingUsed):    #need to add the arguments isCameraUsed and isMuseUsed.
+        print(f"TEST CAM {isCameraUsed} TEST MUSE {isMuseUsed} TEST EYETRACK {isEyeTrackingUsed}")
         # if isCameraUsed:
         cam = cv2.VideoCapture(0)                                                        # this gets the first video capture device connected to machine (camera)
         face_mesh = mediapipe.solutions.face_mesh.FaceMesh(refine_landmarks=True)
@@ -20,6 +21,8 @@ class EyeTracker:
                 mouth = [landmarks[12], landmarks[14]]
                 left =[landmarks[145], landmarks[159]]          #145-159
                 right = [landmarks[374], landmarks[386]]
+                #if userWantsNoMouseMovement
+
                 for landmark in landmarks[473:474]:                                      # every landmark in the list landmarks but we only require the iris landmarks which are [474][478]
                     x = int(landmark.x * frame_width)
                     y = int(landmark.y * frame_height)
@@ -42,7 +45,7 @@ class EyeTracker:
                     y = int(landmark.y * frame_height)
                     cv2.circle(frame, (x, y), 3, (0, 255, 255))
 
-
+                print(mouth[0].y - mouth[1].y)
                 if (mouth[0].y - mouth[1].y) < -0.1:
                     print("mouth open")
                     pyautogui.hotkey('win', 'ctrl', 'o')
@@ -53,11 +56,11 @@ class EyeTracker:
                     print("noclick")
                     pyautogui.sleep(0.2)
                 else:
-                    if(right[0].y - right[1].y) < 0.004:
+                    if(right[0].y - right[1].y) < 0.006:
                         pyautogui.rightClick()
                         print("right click")
                         pyautogui.sleep(0.2)
-                    if (left[0].y - left[1].y) < 0.004:
+                    if (left[0].y - left[1].y) < 0.006:
                         pyautogui.leftClick()
                         print("left click")
                         pyautogui.sleep(0.2)
