@@ -29,3 +29,9 @@ class SharedData:
     def is_eye_tracking_used_no(cls):
         cls.isEyeTrackingUsed = False
         print("eye tracker now false")
+
+    @classmethod
+    def update_values(cls):
+        cls.isCameraUsed = page1.Page1.isCameraUsed
+        cls.isMuseUsed = page1.Page1.isMuseUsed
+        cls.isEyeTrackingUsed = page1.Page1.isEyeTrackerUsed

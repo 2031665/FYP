@@ -29,7 +29,7 @@ class Page2:
 
 
         # BUTTON-1 (SHOOTER GAME)
-        button_1 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_page2, relief="flat",text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
+        button_1 = Button(self.window, borderwidth=0, highlightthickness=0, command=self.go_page3, relief="flat",text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
         button_1.pack(pady=50)
 
         # BUTTON-2 (ANARAM GAME)
@@ -40,21 +40,19 @@ class Page2:
         button_3 = Button(self.window, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat",text="Drag-and-Drop Game", font=("Imprima", 24 * -1),justify="center", width=46, height=3)
         button_3.pack(pady=50)
 
-        print(f"camera bool {UsedHardware.SharedData.isCameraUsed}")
-        print(f"muse bool {UsedHardware.SharedData.isMuseUsed}")
-        print(f"eye tracking bool {UsedHardware.SharedData.isEyeTrackingUsed}")
+        window.mainloop()
+        #print(f"camera bool {UsedHardware.SharedData.isCameraUsed}")
+        #print(f"muse bool {UsedHardware.SharedData.isMuseUsed}")
+        #print(f"eye tracking bool {UsedHardware.SharedData.isEyeTrackingUsed}")
     def go_typing_game(self):
         # allows me to create a page on top of another page
         TypingGame.TypingGame().execute_game()
 
-    def go_page2(self):
+    def go_page3(self):
         win = Toplevel()            #allows me to create a page on top of another page
         page3.Page3(win)            #calling the Page2 on top of Page1
         self.window.withdraw()      #Withdraw the page1
         win.deiconify()
 
-def page():                             #this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
-    print("test1")
-    window = Tk()
-    Page2(window)
-    window.mainloop()
+
+
