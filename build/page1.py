@@ -17,23 +17,34 @@ class Page1:
         height = self.window.winfo_screenheight()
         self.window.geometry("%dx%d" % (width, height))
 
-        button_camera_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_camera_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+
+
+        button_camera_yes = Button(window, borderwidth=0, highlightthickness=0, command=lambda: [UsedHardware.SharedData.is_camera_used_yes(), Page1.enable_button(self)], relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
         button_camera_yes.pack()
-        button_camera_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_camera_used_no, relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
+        button_camera_no = Button(window, borderwidth=0, highlightthickness=0, command=lambda: [UsedHardware.SharedData.is_camera_used_no(), Page1.disable_button(self)], relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
         button_camera_no.pack()
+
+
 
         button_muse_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_muse_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
         button_muse_yes.pack()
         button_muse_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_muse_used_no, relief="flat", text="no", font=("Imprima",24*-1), justify="center", width=46,height=3)
         button_muse_no.pack()
 
-        button_eye_tracking_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
-        button_eye_tracking_yes.pack()
-        button_eye_tracking_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_no, relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3)
-        button_eye_tracking_no.pack()
+        self.button_eye_tracking_yes = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_yes, relief="flat", text="Yes", font=("Imprima", 24 * -1), justify="center",width=46,height=3, state="disabled")
+        self.button_eye_tracking_yes.pack()
+        self.button_eye_tracking_no = Button(window, borderwidth=0, highlightthickness=0, command=UsedHardware.SharedData.is_eye_tracking_used_no, relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3,state="disabled")
+        self.button_eye_tracking_no.pack()
 
         open_page_button = Button(window, text="open new page", command=self.exit_page)
         open_page_button.pack()
+
+    def enable_button(self):
+        self.button_eye_tracking_yes.config(state=NORMAL)
+        self.button_eye_tracking_no.config(state=NORMAL)
+    def disable_button(self):
+        self.button_eye_tracking_yes.config(state=DISABLED)
+        self.button_eye_tracking_no.config(state=DISABLED)
 
     def exit_page(self):
         update_values()
