@@ -11,20 +11,14 @@ class Page3:
         self.window.configure(bg="#7C6767")
         self.window.title("page2")
 
-
-
-
         self.window.bind("<Button-1>", self.go_shooter_game)
 
         self.width = self.window.winfo_screenwidth()
         self.height = self.window.winfo_screenheight()
         self.window.geometry("%dx%d" % (self.width, self.height))
 
-
-
         canvas = tkinter.Canvas(self.window, width=self.width, height=self.height, bg="#7C6767")
         canvas.place(relx=0.5,rely=0.5, anchor=tkinter.CENTER)
-
 
         page_title = Label(self.window, text="Shooter Game Tutorial", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9",justify="center")
         page_title.pack(pady=100)
@@ -44,6 +38,7 @@ class Page3:
     def go_shooter_game(self,_):
     # allows me to create a page on top of another page
         ShooterGamePage.ShooterGamePage().execute_game()
+
 
 def page():  # this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
     window = Tk()
