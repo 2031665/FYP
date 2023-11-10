@@ -32,6 +32,6 @@ class SharedData:
 
     @classmethod
     def update_values(cls):
-        cls.isCameraUsed = page1.Page1.isCameraUsed
-        cls.isMuseUsed = page1.Page1.isMuseUsed
-        cls.isEyeTrackingUsed = page1.Page1.isEyeTrackerUsed
+        cls.isCameraUsed = page1.Frame1.isCameraUsed
+        cls.isMuseUsed = page1.Frame1.isMuseUsed
+        cls.isEyeTrackingUsed = page1.Frame1.isEyeTrackerUsed

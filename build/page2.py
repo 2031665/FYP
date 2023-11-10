@@ -41,9 +41,9 @@ class Page2:
         button_3.pack(pady=50)
 
         window.mainloop()
-        #print(f"camera bool {UsedHardware.SharedData.isCameraUsed}")
-        #print(f"muse bool {UsedHardware.SharedData.isMuseUsed}")
-        #print(f"eye tracking bool {UsedHardware.SharedData.isEyeTrackingUsed}")
+        print(f"camera bool {UsedHardware.SharedData.isCameraUsed}")
+        print(f"muse bool {UsedHardware.SharedData.isMuseUsed}")
+        print(f"eye tracking bool {UsedHardware.SharedData.isEyeTrackingUsed}")
     def go_typing_game(self):
         # allows me to create a page on top of another page
         TypingGame.TypingGame().execute_game()
