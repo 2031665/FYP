@@ -39,7 +39,6 @@ class Page3:
     # allows me to create a page on top of another page
         ShooterGamePage.ShooterGamePage().execute_game()
 
-
 def page():  # this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
     window = Tk()
     Page3(window)

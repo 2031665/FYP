@@ -32,6 +32,7 @@ class EyeTracker:
                     for landmark in mouth:
                         x = int(landmark.x * frame_width)
                         y = int(landmark.y * frame_height)
+                        print(mouth[0].y - mouth[1].y)
                         cv2.circle(frame, (x, y), 3, (255, 255, 0))
                     for landmark in left:
                         x = int(landmark.x * frame_width)
@@ -43,8 +44,9 @@ class EyeTracker:
                         cv2.circle(frame, (x, y), 3, (0, 255, 255))
                 if isCameraUsed:
                     #print(mouth[0].y - mouth[1].y)
-                    if (mouth[0].y - mouth[1].y) < -0.1:
+                    if (mouth[0].y - mouth[1].y) < -0.08:
                         print("mouth open")
+
                         pyautogui.hotkey('win', 'ctrl', 'o')
                         pyautogui.sleep(1)
 

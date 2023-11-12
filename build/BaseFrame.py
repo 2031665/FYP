@@ -8,6 +8,7 @@ from build import page1
 from build.page1 import Frame1
 from build.page1 import Frame2
 from build.page1 import Frame3
+from build.page1 import Frame4
 import threading
 
 class BaseWindow:
@@ -22,6 +23,7 @@ class BaseWindow:
         self.frame1 = Frame1(self.window, self)
         self.frame2 = Frame2(self.window, self)
         self.frame3 = Frame3(self.window, self)
+        self.frame4 = Frame4(self.window, self)
 
         self.current_frame = self.frame1
         self.show_frame(self.frame1)
@@ -36,7 +38,7 @@ class BaseWindow:
     def show_frame(self, frame):
         if self.current_frame:
             self.current_frame.pack_forget()  # Hide the current frame
-        frame.pack()  # Show the selected frame
+        frame.pack(fill=BOTH, expand=True)  # Show the selected frame
         self.current_frame = frame
         self.start_threads()
 
