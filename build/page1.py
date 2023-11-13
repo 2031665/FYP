@@ -81,9 +81,7 @@ class Frame1(Frame):
         self.button_eye_tracking_no = Button(self, borderwidth=0, highlightthickness=0, command=lambda: [UsedHardware.SharedData.is_eye_tracking_used_no(), Frame1.update_values(self)], relief="flat", text="no", font=("Imprima", 24 * -1), justify="center",width=46,height=3,state="disabled")
         self.button_eye_tracking_no.pack(pady=5)
 
-        button = Button(self, text="Continue", font=("Imprima", 24 * -1),
-                        command=lambda: controller.show_frame(controller.frame2), width=46, height=3, borderwidth=0)
-
+        button = Button(self, text="Continue", font=("Imprima", 24 * -1), command=lambda: controller.show_frame(controller.frame2), width=46, height=3, borderwidth=0)
         button.pack(pady=100)
 
 
@@ -113,34 +111,71 @@ class Frame2(Frame):
         page_title = Label(self, text="Muse Headband Training", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9")
         page_title.pack(side=TOP)
 
+
+        # Frame2.check_image(self, Frame2.values(self, UsedHardware.SharedData.isCameraUsed, UsedHardware.SharedData.isMuseUsed, UsedHardware.SharedData.isEyeTrackingUsed))
+
         label_camera = Label(self, text=f"camera Boolean Value: {UsedHardware.SharedData.isCameraUsed}", font=("Imprima", 24 * -1), bg="#7C6767")
         label_camera.pack(pady=10)
 
-        label_muse = Label(self, text=f"muse Boolean Value: {UsedHardware.SharedData.isMuseUsed}", font=("Imprima", 24 * -1), bg="#7C6767")
+        # label_camera = Label(self, text=f"camera Boolean Value: ", image=Frame2.check_image(self, Frame1.isCameraUsed),
+        #                      font=("Imprima", 24 * -1), bg="#7C6767", compound='right')
+        # label_camera.pack(pady=10)
+
+        label_muse = Label(self, text=f"Muse Boolean Value: {UsedHardware.SharedData.isMuseUsed}", font=("Imprima", 24 * -1), bg="#7C6767")
         label_muse.pack(pady=10)
+
+        # label_muse = Label(self, text=f"muse Boolean Value: ", image=Frame2.check_image(self, Frame1.isMuseUsed), font=("Imprima", 24 * -1), bg="#7C6767", compound='right')
+        # label_muse.pack(pady=10)
 
         label_eye_tracker = Label(self, text=f"eye track Boolean Value: {UsedHardware.SharedData.isEyeTrackingUsed}", font=("Imprima", 24 * -1), bg="#7C6767")
         label_eye_tracker.pack(pady=10)
 
+        # label_eye_tracker = Label(self, text=f"eye track Boolean Value: ",image=Frame2.check_image(self, Frame1.isEyeTrackerUsed), font=("Imprima", 24 * -1), bg="#7C6767", compound='right')
+        # label_eye_tracker.pack(pady=10)
+
         # BUTTON-1 (SHOOTER GAME)
-        button_1 = Button(self, borderwidth=0, highlightthickness=0, relief="flat",command=lambda: controller.show_frame(controller.frame3),
-                          text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
+        button_1 = Button(self, borderwidth=0, highlightthickness=0, relief="flat",command=lambda: controller.show_frame(controller.frame3), text="Shooter Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
         button_1.pack(pady=10)
 
         # BUTTON-2 (ANARAM GAME)
-        button_2 = Button(self, borderwidth=0, highlightthickness=0, command=self.go_typing_game, relief="flat",
-                          text="Anagram Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
+        button_2 = Button(self, borderwidth=0, highlightthickness=0, command=lambda: controller.show_frame(controller.frame5), relief="flat", text="Anagram Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
         button_2.pack(pady=10)
 
         # BUTTON-3 (DRAG-AND-DROP GAME)
-        button_3 = Button(self, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"),
-                          relief="flat", text="Drag-and-Drop Game", font=("Imprima", 24 * -1), justify="center",
-                          width=46, height=3)
+        button_3 = Button(self, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat", text="Drag-and-Drop Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
         button_3.pack(pady=10)
 
-    def go_typing_game(self):
-        # allows me to create a page on top of another page
-        TypingGame.TypingGame().execute_game()
+    # def values(self, camera, muse, eye_track):
+    #     booleanValues = [camera, muse, eye_track]
+    #     return booleanValues
+    # def check_image(self, booleanValues):
+    #     global image
+    #     for i in range(3):
+    #
+    #         if booleanValues[i]==True:
+    #             print("input False")
+    #             false_image = Image.open("build/assets/icons/False.png")
+    #             resized_false_image = false_image.resize((24, 29), Image.ADAPTIVE)
+    #             self.new_resized_false_image = ImageTk.PhotoImage(resized_false_image)
+    #             image = self.new_resized_false_image
+    #         else:
+    #             print("input True")
+    #             true_image = Image.open("build/assets/icons/False.png")
+    #             resized_true_image = true_image.resize((24, 29), Image.ADAPTIVE)
+    #             self.new_resized_true_image = ImageTk.PhotoImage(resized_true_image)
+    #             image = self.new_resized_true_image
+    #
+    #     return image
+
+
+
+    # def chosing_image(self):
+    #     false_image = Image.open("build/assets/icons/False.png")
+    #     resized_false_image = false_image.resize((149, 140), Image.ADAPTIVE)
+    #     self.new_resized_false_image = ImageTk.PhotoImage(resized_false_image)
+    #     label_camera = Label(self, text=f"camera Boolean Value: {false_image}",
+    #                          font=("Imprima", 24 * -1), bg="#7C6767")
+    #     label_camera.pack(pady=10)
 class Frame3(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent, bg=Global.variables.background_color)
@@ -181,17 +216,13 @@ class Frame4(Frame):
         back_button_image = Image.open("build/assets/buttons/back_button.png")
         resized_back_button_image = back_button_image.resize((149, 140), Image.ADAPTIVE)
         self.new_resized_back_button_image = ImageTk.PhotoImage(resized_back_button_image)
-        back_button = Button(self, image=self.new_resized_back_button_image,
-                             command=lambda: controller.show_frame(controller.frame1),
-                             bg=Global.variables.background_color, activebackground=Global.variables.background_color,
-                             borderwidth=0)
+        back_button = Button(self, image=self.new_resized_back_button_image, command=lambda: controller.show_frame(controller.frame1), bg=Global.variables.background_color, activebackground=Global.variables.background_color, borderwidth=0)
         back_button.pack(side=TOP, anchor=W)
 
         page_title = Label(self, text="Information of Features", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9")
         page_title.pack()
 
-        camera_info_label = Label(self, text="What are Camera features? What do they do?", font=("Imprima", 24 * -1),
-                             justify="center", bg=Global.variables.background_color)
+        camera_info_label = Label(self, text="What are Camera features? What do they do?", font=("Imprima", 24 * -1), justify="center", bg=Global.variables.background_color)
         camera_info_label.pack(pady=3)
 
         camera_info_text = Image.open("build/assets/text/camera_info_text.png")
@@ -201,8 +232,7 @@ class Frame4(Frame):
         photo.image = self.newCameraInfoText
         photo.pack()
 
-        muse_info_label = Label(self, text="Why need a Muse Headband?", font=("Imprima", 24 * -1),
-                             justify="center", bg=Global.variables.background_color)
+        muse_info_label = Label(self, text="Why need a Muse Headband?", font=("Imprima", 24 * -1), justify="center", bg=Global.variables.background_color)
         muse_info_label.pack(pady=3)
 
         muse_info_text = Image.open("build/assets/text/muse_info_text.png")
@@ -212,8 +242,7 @@ class Frame4(Frame):
         photo.image = self.newMuseInfoText
         photo.pack()
 
-        eye_tracker_info_label = Label(self, text="What is Eye tracking? How it works?", font=("Imprima", 24 * -1),
-                                justify="center", bg=Global.variables.background_color)
+        eye_tracker_info_label = Label(self, text="What is Eye tracking? How it works?", font=("Imprima", 24 * -1), justify="center", bg=Global.variables.background_color)
         eye_tracker_info_label.pack(pady=3)
 
         eye_tracker_info_text = Image.open("build/assets/text/eye_tracker_info_text.png")
@@ -223,6 +252,39 @@ class Frame4(Frame):
         photo.image = self.newEyeTrackerInfoText
         photo.pack()
 
+class Frame5(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent, bg=Global.variables.background_color)
+        self.controller = controller
+
+        back_button_image = Image.open("build/assets/buttons/back_button.png")
+        resized_back_button_image = back_button_image.resize((149, 140), Image.ADAPTIVE)
+        self.new_resized_back_button_image = ImageTk.PhotoImage(resized_back_button_image)
+        back_button = Button(self, image=self.new_resized_back_button_image, command=lambda: controller.show_frame(controller.frame2), bg=Global.variables.background_color, activebackground=Global.variables.background_color, borderwidth=0)
+        back_button.pack(side=TOP, anchor=W)
+
+        page_title = Label(self, text="Typing Game Tutorial", font=("Imprima Regular", 40 * -1), bg="#7C6767", fg="#D9D9D9", justify="center")
+        page_title.pack()
+
+        typing_game_photo = Image.open("build/assets/GamePictures/TypingGameImage.png")
+        resized_typing_game_photo = typing_game_photo.resize((636, 385), Image.ADAPTIVE)
+        self.newTypingGamePhoto = ImageTk.PhotoImage(resized_typing_game_photo)
+        photo = Label(self, image=self.newTypingGamePhoto, borderwidth=0)
+        photo.image = self.newTypingGamePhoto
+        photo.pack()
+
+        instructive_text = Image.open("build/assets/text/instructive_text_typing_game.png")
+        resized_text = instructive_text.resize((1187, 162), Image.ADAPTIVE)
+        self.new_instructive_text = ImageTk.PhotoImage(resized_text)
+        photo = Label(self, image=self.new_instructive_text, borderwidth=0)
+        photo.pack(pady=100)
+
+        button = Button(self, text="Continue", font=("Imprima", 24 * -1), command=lambda: self.go_typing_game(), width=46, height=3, borderwidth=0)
+        button.pack()
+
+    def go_typing_game(self):
+        # allows me to create a page on top of another page
+        TypingGame.TypingGame().execute_game()
 # def page():                             #this method makes it easier to control other pages multiple pages can run at the same time, how ever if we withdraw them they will be discarded
 #     print("test1")
 #     window = Tk()

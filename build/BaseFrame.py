@@ -9,6 +9,7 @@ from build.page1 import Frame1
 from build.page1 import Frame2
 from build.page1 import Frame3
 from build.page1 import Frame4
+from build.page1 import Frame5
 import threading
 
 class BaseWindow:
@@ -24,6 +25,7 @@ class BaseWindow:
         self.frame2 = Frame2(self.window, self)
         self.frame3 = Frame3(self.window, self)
         self.frame4 = Frame4(self.window, self)
+        self.frame5 = Frame5(self.window, self)
 
         self.current_frame = self.frame1
         self.show_frame(self.frame1)
@@ -63,7 +65,7 @@ class BaseWindow:
     def run_eye_tracker(self):
         UsedHardware.SharedData.update_values()
         eye_track = eye_movement_file.EyeTracker()
-        eye_track.eye_track(page1.Frame1.isCameraUsed, UsedHardware.SharedData.isMuseUsed, UsedHardware.SharedData.isEyeTrackingUsed)
+        eye_track.eye_track(page1.Frame1.isCameraUsed, page1.Frame1.isMuseUsed, page1.Frame1.isEyeTrackerUsed)
 
     def run_muse_inputs(self):
         muse_inputs = MuseOscConnection.MuseInput()
