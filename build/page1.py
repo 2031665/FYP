@@ -141,41 +141,6 @@ class Frame2(Frame):
         button_2 = Button(self, borderwidth=0, highlightthickness=0, command=lambda: controller.show_frame(controller.frame5), relief="flat", text="Anagram Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
         button_2.pack(pady=10)
 
-        # BUTTON-3 (DRAG-AND-DROP GAME)
-        button_3 = Button(self, borderwidth=0, highlightthickness=0, command=lambda: print("button_3 clicked"), relief="flat", text="Drag-and-Drop Game", font=("Imprima", 24 * -1), justify="center", width=46, height=3)
-        button_3.pack(pady=10)
-
-    # def values(self, camera, muse, eye_track):
-    #     booleanValues = [camera, muse, eye_track]
-    #     return booleanValues
-    # def check_image(self, booleanValues):
-    #     global image
-    #     for i in range(3):
-    #
-    #         if booleanValues[i]==True:
-    #             print("input False")
-    #             false_image = Image.open("build/assets/icons/False.png")
-    #             resized_false_image = false_image.resize((24, 29), Image.ADAPTIVE)
-    #             self.new_resized_false_image = ImageTk.PhotoImage(resized_false_image)
-    #             image = self.new_resized_false_image
-    #         else:
-    #             print("input True")
-    #             true_image = Image.open("build/assets/icons/False.png")
-    #             resized_true_image = true_image.resize((24, 29), Image.ADAPTIVE)
-    #             self.new_resized_true_image = ImageTk.PhotoImage(resized_true_image)
-    #             image = self.new_resized_true_image
-    #
-    #     return image
-
-
-
-    # def chosing_image(self):
-    #     false_image = Image.open("build/assets/icons/False.png")
-    #     resized_false_image = false_image.resize((149, 140), Image.ADAPTIVE)
-    #     self.new_resized_false_image = ImageTk.PhotoImage(resized_false_image)
-    #     label_camera = Label(self, text=f"camera Boolean Value: {false_image}",
-    #                          font=("Imprima", 24 * -1), bg="#7C6767")
-    #     label_camera.pack(pady=10)
 class Frame3(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent, bg=Global.variables.background_color)
